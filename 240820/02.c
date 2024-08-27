@@ -7,6 +7,7 @@
 
 int main(int argc, char **argv) {
 	DIR *dirp;
+	DIR *dirp2;
 	int f_cnt = 0;
 	int d_cnt = 0;
 
@@ -18,7 +19,7 @@ int main(int argc, char **argv) {
 	
 	while ((dentry = readdir(dirp))) {
 		if (dentry -> d_ino != 0) {
-			if ((dirp = opendir(argv[1])) == NULL) {
+			if ((dirp2 = opendir(dentry -> d_name)) == NULL) {
 				f_cnt++;
 			} 
 			else {
